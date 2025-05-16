@@ -21,24 +21,23 @@
   <meta name="author" content="gh">
   <meta name="keywords" content="">
   
-    <meta name="description" content="windows配置python环境 与 linux配置python环境">
+    <meta name="description" content="cloudflare tunnel用来将你本地的服务（比如网站、管理面板、API 等）安全地暴露到公网，无需公网 IP、无需端口映射，也不需要你直接暴露服务器到互联网">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux与windows的python配置">
-<meta property="og:url" content="https://blog.ghthe.dpdns.org/2025/05/11/linux%E4%B8%8Ewindows%E7%9A%84python%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="在linux上使用cloudflare_tunnel转发服务到公网">
+<meta property="og:url" content="https://blog.ghthe.dpdns.org/2025/05/16/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8cloudflare_tunnel%E8%BD%AC%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%88%B0%E5%85%AC%E7%BD%91/index.html">
 <meta property="og:site_name" content="ghthe的博客">
-<meta property="og:description" content="windows配置python环境 与 linux配置python环境">
+<meta property="og:description" content="cloudflare tunnel用来将你本地的服务（比如网站、管理面板、API 等）安全地暴露到公网，无需公网 IP、无需端口映射，也不需要你直接暴露服务器到互联网">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.ghthe.dpdns.org/img/blog/a1/download.webp">
-<meta property="article:published_time" content="2025-05-11T14:41:06.558Z">
-<meta property="article:modified_time" content="2025-05-11T14:41:06.558Z">
+<meta property="og:image" content="https://blog.ghthe.dpdns.org/img/blog/a2/handshake.eh3a-Ml1_1IcAgC.webp">
+<meta property="article:published_time" content="2025-05-16T00:48:07.532Z">
+<meta property="article:modified_time" content="2025-05-16T01:33:55.286Z">
 <meta property="article:author" content="gh">
-<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.ghthe.dpdns.org/img/blog/a1/download.webp">
+<meta name="twitter:image" content="https://blog.ghthe.dpdns.org/img/blog/a2/handshake.eh3a-Ml1_1IcAgC.webp">
   
   
   
-  <title>linux与windows的python配置 - ghthe的博客</title>
+  <title>在linux上使用cloudflare_tunnel转发服务到公网 - ghthe的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="linux与windows的python配置"></span>
+            <span id="subtitle" data-typed-text="在linux上使用cloudflare_tunnel转发服务到公网"></span>
           
         </div>
 
@@ -215,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-05-11 22:41" pubdate>
-          2025年5月11日 晚上
+        <time datetime="2025-05-16 08:48" pubdate>
+          2025年5月16日 早上
         </time>
       </span>
     
@@ -227,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          405 字
+          334 字
         
       </span>
     
@@ -238,7 +237,7 @@
         
         
         
-          4 分钟
+          3 分钟
         
       </span>
     
@@ -275,40 +274,48 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">linux与windows的python配置</h1>
+            <h1 id="seo-header">在linux上使用cloudflare_tunnel转发服务到公网</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="windows配置python"><a href="#windows配置python" class="headerlink" title="windows配置python"></a>windows配置python</h1><h2 id="下载python"><a href="#下载python" class="headerlink" title="下载python"></a>下载python</h2><p>在python官网下载python发行版，一般推荐直接下载最新版，以获取最新的语法<br><a target="_blank" rel="noopener" href="https://www.python.org/downloads/">pyhton下载地址</a></p>
-<p><img src="/img/blog/a1/QQ20250511-205310.png" srcset="/img/loading.gif" lazyload alt="download"></p>
-<p>点开已经下载好的python文件</p>
-<p><img src="/img/blog/a1/QQ20250511-210129.png" srcset="/img/loading.gif" lazyload alt="python"></p>
-<h2 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装python</h2><p>可以看到两个选项，其中，use admin privileges when installing py.exe 是指只将python下载到你现在所用的用户，一般情况下不用勾选，请勾选上add python.exe to path 这个选项可以将python添加到你的用户变量上<br>接着选择 customize installation 这个选项可以将python下载到你选定的目录</p>
-<p><img src="/img/blog/a1/QQ20250511-210845.png" srcset="/img/loading.gif" lazyload alt="python"></p>
-<p>勾选上默认的四项<br>pip是python的包管理器,在python的包管理中占据重要地位,<br>tkinter是python的图形库，可以用于构架简单的gui</p>
-<p><img src="/img/blog/a1/QQ20250511-211739.png" srcset="/img/loading.gif" lazyload alt="python"></p>
-<p>选择一个你想要安装的目录,等待安装完成</p>
-<p><img src="/img/blog/a1/QQ20250511-211910.png" srcset="/img/loading.gif" lazyload alt="pyhton"></p>
-<p><img src="/img/blog/a1/QQ20250511-212022.png" srcset="/img/loading.gif" lazyload alt="python"><br>安装完成</p>
-<h2 id="安装pycharm"><a href="#安装pycharm" class="headerlink" title="安装pycharm"></a>安装pycharm</h2><p>在官网下载pycharm<br><a href="/https://www.jetbrains.com/pycharm/download/?section=windows">pycharm</a>点击exe下载</p>
-<p><img src="/img/blog/a1/QQ20250511-212402.png" srcset="/img/loading.gif" lazyload alt="py"></p>
-<p>在设置中找到python解析器添加你之前下载好的路径</p>
-<h1 id="在linux中下载python"><a href="#在linux中下载python" class="headerlink" title="在linux中下载python"></a>在linux中下载python</h1><p><img src="/img/blog/a1/QQ20250511-213206.png" srcset="/img/loading.gif" lazyload alt="linux"></p>
-<p>在linux发行版非最小化安装前提下一般会预安装python,但是为了不破坏linux依赖环境推荐使用虚拟环境<br>如果没有可以使用  sudo apt install python3  来下载python<br>首先创建一个你想要作为linux虚拟环境的<br>目录</p>
-<pre><code class="hljs">mkdir ./python_venv
-cd ./python_venv
-python3 -m venv venv
+                <h1 id="cloudflare-tunnel是什么"><a href="#cloudflare-tunnel是什么" class="headerlink" title="cloudflare tunnel是什么"></a>cloudflare tunnel是什么</h1><p>cloudflare tunnel用来将你本地的服务（比如网站、管理面板、API 等）安全地暴露到公网，无需公网 IP、无需端口映射，也不需要你直接暴露服务器到互联网。<br>通过在本地的轻量级守护进程cloudflared即可创建隧道，将本地流量发送到cloudflare最近的数据中心</p>
+<h2 id="你需要什么"><a href="#你需要什么" class="headerlink" title="你需要什么"></a>你需要什么</h2><p>一个cloudflare账号，一个可访问域名，本地已运行alist服务<br><a target="_blank" rel="noopener" href="https://dash.cloudflare.com/">cloudflare注册界面</a><br>将你的域名绑定在cloudflare上</p>
+<h2 id="安装cloudflare-tunnel-命令行工具"><a href="#安装cloudflare-tunnel-命令行工具" class="headerlink" title="安装cloudflare tunnel 命令行工具"></a>安装cloudflare tunnel 命令行工具</h2><pre><code class="hljs"># Debian/Ubuntu 安装方式
+sudo apt install cloudflared
+# archlinux 安装方式
+sudo pacman -S cloudflared
 </code></pre>
-<p>这会在python_venv建立一个名为venv的文件夹,其中有python与pip的可执行文件</p>
-<pre><code class="hljs">source venv/bin/activate
+<p>将你注册的cloudflare账号密码输入</p>
+<pre><code class="hljs">cloudflared tunnel login
 </code></pre>
-<p>你可以通过这个命令来激活虚拟环境.如果不想每次都要执行一遍命令你可以在bash文件中将命令写人该文件</p>
-<pre><code class="hljs"> source python/venv/bin/activate
+<h2 id="使用cloudflare-tunnel创建隧道"><a href="#使用cloudflare-tunnel创建隧道" class="headerlink" title="使用cloudflare tunnel创建隧道"></a>使用cloudflare tunnel创建隧道</h2><pre><code class="hljs">cloudflared tunnel create alist-tunnel
+cloudflared tunnel route dns alist-tunnel alist.example.com
 </code></pre>
-<p><img src="/img/blog/a1/QQ20250511-214308.png" srcset="/img/loading.gif" lazyload alt="linux"><br>激活后可以看到venv的虚拟环境前缀</p>
-<p><img src="/img/blog/a1/2025-05-11-214911_screenshot.png" srcset="/img/loading.gif" lazyload alt="linux"></p>
-<p>在pycharm中添加你的python解析器(在虚拟环境中的)</p>
+<p>alist.example.com在example位置输入你的域名</p>
+<h2 id="编写你的tunnel配置文件"><a href="#编写你的tunnel配置文件" class="headerlink" title="编写你的tunnel配置文件"></a>编写你的tunnel配置文件</h2><pre><code class="hljs">sudo vim /etc/cloudflared/config.yml
+</code></pre>
+<p>配置文件</p>
+<pre><code class="hljs">tunnel: alist-tunnel
+credentials-file: /home/you_name/.cloudflared/&lt;tunnel-ID&gt;.json
+origincert: /home/your-user/.cloudflared/cert.pem
+ingress:
+- hostname: alist.example.com
+  service: http://localhost:5244
+- service: http_status:404
+</code></pre>
+<p>一般来说alist服务运行在端口号5244,请确定服务端口号与输入一致<br>hostname输入 alist.你的域名<br>确定credentials-file在你的用户目录中，如果使用root运行则会在 &#x2F;root 目录中</p>
+<p>将输出的id输入你的配置文件中</p>
+<pre><code class="hljs">cloudflared tunnel list  
+</code></pre>
+<p>设置权限</p>
+<pre><code class="hljs">sudo chown root:root /etc/cloudflared/config.yml
+sudo chmod 600 /etc/cloudflared/config.yml
+</code></pre>
+<p>运行服务</p>
+<pre><code class="hljs">cloudflared tunnel --config /etc/cloudflared/config.yml run
+</code></pre>
+<p>在浏览器中输入你的域名即可访问alist</p>
 
                 
               </div>
@@ -317,34 +324,6 @@ python3 -m venv venv
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/python/" class="category-chain-item">python</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/python/" class="print-no-link">#python</a>
-      
-    </div>
   
 </div>
 
@@ -354,8 +333,8 @@ python3 -m venv venv
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>linux与windows的python配置</div>
-      <div>https://blog.ghthe.dpdns.org/2025/05/11/linux与windows的python配置/</div>
+      <div>在linux上使用cloudflare_tunnel转发服务到公网</div>
+      <div>https://blog.ghthe.dpdns.org/2025/05/16/在linux上使用cloudflare_tunnel转发服务到公网/</div>
     </div>
     <div class="license-meta">
       
@@ -367,7 +346,7 @@ python3 -m venv venv
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年5月11日</div>
+          <div>2025年5月16日</div>
         </div>
       
       
@@ -399,15 +378,15 @@ python3 -m venv venv
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/05/16/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8cloudflare_tunnel%E8%BD%AC%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%88%B0%E5%85%AC%E7%BD%91/" title="在linux上使用cloudflare_tunnel转发服务到公网">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">在linux上使用cloudflare_tunnel转发服务到公网</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2025/05/11/linux%E4%B8%8Ewindows%E7%9A%84python%E9%85%8D%E7%BD%AE/" title="linux与windows的python配置">
+                        <span class="hidden-mobile">linux与windows的python配置</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

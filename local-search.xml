@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>在linux上使用cloudflare_tunnel转发服务到公网</title>
+    <link href="/2025/05/16/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8cloudflare_tunnel%E8%BD%AC%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%88%B0%E5%85%AC%E7%BD%91/"/>
+    <url>/2025/05/16/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8cloudflare_tunnel%E8%BD%AC%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%88%B0%E5%85%AC%E7%BD%91/</url>
+    
+    <content type="html"><![CDATA[<h1 id="cloudflare-tunnel是什么"><a href="#cloudflare-tunnel是什么" class="headerlink" title="cloudflare tunnel是什么"></a>cloudflare tunnel是什么</h1><p>cloudflare tunnel用来将你本地的服务（比如网站、管理面板、API 等）安全地暴露到公网，无需公网 IP、无需端口映射，也不需要你直接暴露服务器到互联网。<br>通过在本地的轻量级守护进程cloudflared即可创建隧道，将本地流量发送到cloudflare最近的数据中心</p><h2 id="你需要什么"><a href="#你需要什么" class="headerlink" title="你需要什么"></a>你需要什么</h2><p>一个cloudflare账号，一个可访问域名，本地已运行alist服务<br><a href="https://dash.cloudflare.com/">cloudflare注册界面</a><br>将你的域名绑定在cloudflare上</p><h2 id="安装cloudflare-tunnel-命令行工具"><a href="#安装cloudflare-tunnel-命令行工具" class="headerlink" title="安装cloudflare tunnel 命令行工具"></a>安装cloudflare tunnel 命令行工具</h2><pre><code class="hljs"># Debian/Ubuntu 安装方式sudo apt install cloudflared# archlinux 安装方式sudo pacman -S cloudflared</code></pre><p>将你注册的cloudflare账号密码输入</p><pre><code class="hljs">cloudflared tunnel login</code></pre><h2 id="使用cloudflare-tunnel创建隧道"><a href="#使用cloudflare-tunnel创建隧道" class="headerlink" title="使用cloudflare tunnel创建隧道"></a>使用cloudflare tunnel创建隧道</h2><pre><code class="hljs">cloudflared tunnel create alist-tunnelcloudflared tunnel route dns alist-tunnel alist.example.com</code></pre><p>alist.example.com在example位置输入你的域名</p><h2 id="编写你的tunnel配置文件"><a href="#编写你的tunnel配置文件" class="headerlink" title="编写你的tunnel配置文件"></a>编写你的tunnel配置文件</h2><pre><code class="hljs">sudo vim /etc/cloudflared/config.yml</code></pre><p>配置文件</p><pre><code class="hljs">tunnel: alist-tunnelcredentials-file: /home/you_name/.cloudflared/&lt;tunnel-ID&gt;.jsonorigincert: /home/your-user/.cloudflared/cert.pemingress:- hostname: alist.example.com  service: http://localhost:5244- service: http_status:404</code></pre><p>一般来说alist服务运行在端口号5244,请确定服务端口号与输入一致<br>hostname输入 alist.你的域名<br>确定credentials-file在你的用户目录中，如果使用root运行则会在 &#x2F;root 目录中</p><p>将输出的id输入你的配置文件中</p><pre><code class="hljs">cloudflared tunnel list  </code></pre><p>设置权限</p><pre><code class="hljs">sudo chown root:root /etc/cloudflared/config.ymlsudo chmod 600 /etc/cloudflared/config.yml</code></pre><p>运行服务</p><pre><code class="hljs">cloudflared tunnel --config /etc/cloudflared/config.yml run</code></pre><p>在浏览器中输入你的域名即可访问alist</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>linux与windows的python配置</title>
     <link href="/2025/05/11/linux%E4%B8%8Ewindows%E7%9A%84python%E9%85%8D%E7%BD%AE/"/>
     <url>/2025/05/11/linux%E4%B8%8Ewindows%E7%9A%84python%E9%85%8D%E7%BD%AE/</url>
